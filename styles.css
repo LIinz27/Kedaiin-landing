@@ -27,9 +27,9 @@
   --r2: 10px;
 
   /* bayangan: 3 tingkat saja — diam / naik / mengambang */
-  --shadow-1: 0 1px 2px rgb(28 25 23 / 0.06), 0 2px 6px rgb(28 25 23 / 0.05);
-  --shadow-2: 0 2px 4px rgb(28 25 23 / 0.07), 0 10px 22px rgb(28 25 23 / 0.09);
-  --shadow-3: 0 1px 2px rgb(28 25 23 / 0.06), 0 12px 32px rgb(28 25 23 / 0.12);
+  --shadow-1: 0 1px 2px rgb(28 25 23 / 0.08), 0 4px 10px rgb(28 25 23 / 0.06);
+  --shadow-2: 0 4px 8px rgb(28 25 23 / 0.10), 0 14px 30px rgb(28 25 23 / 0.12);
+  --shadow-3: 0 2px 4px rgb(28 25 23 / 0.08), 0 18px 40px rgb(28 25 23 / 0.16);
 
   /* gerak: satu easing, tiga durasi */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -209,8 +209,10 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
 /* ── hero ─────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  overflow: clip; /* bentuk latar tidak boleh menambah lebar halaman */
-  padding: var(--s8) 0 var(--s7);
+  z-index: 1; /* kartu menembus seksi berikutnya — harus dilukis di atasnya */
+  overflow-x: clip; /* bentuk latar tidak boleh menambah lebar halaman */
+  overflow-y: visible;
+  padding: var(--s8) 0 0;
   background:
     radial-gradient(1100px 460px at 82% 22%, rgb(154 52 18 / 0.07), transparent 64%),
     linear-gradient(180deg, var(--paper-2), var(--paper) 78%);
@@ -234,7 +236,7 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
   gap: var(--s7);
-  align-items: center;
+  align-items: end;
 }
 .eyebrow {
   font-family: var(--mono);
@@ -264,7 +266,7 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
 }
 
 .frame {
-  margin: 0;
+  margin: 0 0 -48px; /* kartu hero turun 48 px menembus batas seksi */
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--r2);
@@ -284,6 +286,10 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
   padding: var(--s3) var(--s2) var(--s1);
 }
 
+/* kartu hero sengaja menembus batas seksi (lihat margin-bottom .hero);
+   seksi sesudahnya diberi padding ekstra 48 px supaya teksnya tidak tertutup */
+#cara { padding-top: calc(var(--s8) + 48px); }
+
 /* ── pita (latar krem) — satu-satunya variasi latar seksi ─── */
 .band { background: var(--paper-3); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--s8) 0; }
 
@@ -298,8 +304,16 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
   counter-reset: step;
 }
 .steps li {
+  background: #fff;
+  border: 1px solid var(--line);
   border-top: 2px solid var(--ink);
-  padding-top: var(--s4);
+  border-radius: var(--r2);
+  padding: var(--s5);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--dur) var(--ease), translate var(--dur) var(--ease);
+}
+@media (hover: hover) {
+  .steps li:hover { translate: 0 -2px; box-shadow: var(--shadow-2); }
 }
 .steps__n {
   display: block;
@@ -341,7 +355,8 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
     border-color var(--dur) var(--ease);
 }
 /* reveal pakai transform, hover pakai translate — dua properti, tidak bentrok */
-html.js .card.reveal {
+html.js .card.reveal,
+html.js .steps > li.reveal {
   transition:
     opacity var(--dur-reveal) var(--ease) var(--rd),
     transform var(--dur-reveal) var(--ease) var(--rd),
@@ -388,11 +403,18 @@ html.js .card.reveal {
   display: grid;
   gap: var(--s6);
 }
+/* alas berbeda di belakang mock: mock terlihat mengambang, bukan menempel latar seksi */
+.shots > li {
+  background: #f6f1ea;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: var(--s4);
+}
 .shots img {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: var(--r2);
-  box-shadow: var(--shadow-1);
+  border-radius: 8px;
+  box-shadow: var(--shadow-2);
 }
 .shots__cap {
   margin-top: var(--s3);
@@ -404,13 +426,20 @@ html.js .card.reveal {
 /* ── harga & testimoni (placeholder) ──────────────────────── */
 .empty {
   margin-top: var(--s4);
-  border: 1px dashed var(--line);
-  border-radius: var(--r2);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s1);
+  border: 1px dashed color-mix(in srgb, var(--ink) 22%, transparent);
+  border-radius: 12px;
   padding: var(--s6);
+  background: transparent;
   color: var(--ink-2);
-  background: var(--paper-2);
 }
 .empty p { margin: 0; }
+.empty__t { font-weight: 600; color: var(--ink-2); }
+.empty__s { font-size: 0.9375rem; }
 
 .harga__act { margin-top: var(--s4); }
 
@@ -461,6 +490,11 @@ html.js .faq details.is-open .faq__a { grid-template-rows: 1fr; }
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--s6);
   align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r2);
+  padding: var(--s6);
+  box-shadow: var(--shadow-3); /* blok CTA mengambang, bukan pita datar */
 }
 .closing__act { text-align: right; }
 .closing__num {
@@ -498,8 +532,9 @@ html.js .faq details.is-open .faq__a { grid-template-rows: 1fr; }
   .nav { display: none; }
   .bar__in { gap: var(--s3); }
   .steps, .cards { grid-template-columns: 1fr; }
-  .hero { padding: var(--s6) 0 var(--s5); }
+  .hero { padding: var(--s6) 0 0; }
   .band, .section, .closing { padding: var(--s7) 0; }
+  #cara { padding-top: calc(var(--s7) + 48px); }
   .wrap { padding: 0 var(--s4); }
   .cta .btn { flex: 1 1 auto; }
   .frame { padding: 6px; }
