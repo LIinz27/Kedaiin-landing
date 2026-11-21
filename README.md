@@ -45,3 +45,33 @@ Ganti `width`/`height` di `index.html` bila rasio gambar berubah, dan perbarui `
 - Buka di 1280×800 dan 390×844: tidak boleh ada gulir horizontal.
 - Satu `h1` per halaman, semua gambar punya `alt`.
 - Total berat halaman (HTML + CSS + gambar) ≤ 2 MB.
+
+## Publikasi
+
+Repo publik: <https://github.com/LIinz27/Kedaiin-landing> — GitHub Pages dari branch `main`,
+folder `/ (root)`. URL sementara (aktif):
+
+<https://liinz27.github.io/Kedaiin-landing/>
+
+Setiap `git push` ke `main` menerbitkan ulang halaman dalam ~1 menit.
+
+### Custom domain `kedaiin.id` — BELUM AKTIF
+
+Domain **belum dibeli**, jadi DNS belum diubah dan GitHub Pages belum diarahkan. Jangan
+menganggap `kedaiin.id` hidup sampai dua langkah di bawah selesai.
+
+1. **DNS di registrar** (setelah domain dibeli):
+
+   | Tipe | Nama | Nilai |
+   |---|---|---|
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | CNAME | `www` | `liinz27.github.io` |
+
+2. **GitHub** → repo → Settings → Pages → Custom domain: `kedaiin.id` (atau `www.kedaiin.id`),
+   Save; tunggu sertifikat terbit, lalu centang **Enforce HTTPS**.
+
+Setelah itu `canonical`, `og:url`, dan `og:image` di `index.html` sudah menunjuk `https://kedaiin.id/`
+sehingga tidak perlu diubah lagi.
