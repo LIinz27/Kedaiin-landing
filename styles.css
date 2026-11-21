@@ -1,5 +1,5 @@
 /* Kedaiin — halaman marketing. Token warna/tipe mengacu
-   ~/vault/Projects/kedaiin/desain/tokens.css, skala sendiri untuk ukuran layar besar. */
+   ~/vault/Projects/kedaiin/design/tokens.css, skala sendiri untuk ukuran layar besar. */
 
 :root {
   /* warna */
@@ -26,11 +26,21 @@
   --r1: 6px;
   --r2: 10px;
 
+  /* bayangan: 3 tingkat saja — diam / naik / mengambang */
+  --shadow-1: 0 1px 2px rgb(28 25 23 / 0.06), 0 2px 6px rgb(28 25 23 / 0.05);
+  --shadow-2: 0 2px 4px rgb(28 25 23 / 0.07), 0 10px 22px rgb(28 25 23 / 0.09);
+  --shadow-3: 0 1px 2px rgb(28 25 23 / 0.06), 0 12px 32px rgb(28 25 23 / 0.12);
+
+  /* gerak: satu easing, tiga durasi */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-reveal: 220ms;
+  --dur-acc: 200ms;
+
   --font: -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", "DejaVu Sans", Arial, sans-serif;
   --mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "DejaVu Sans Mono", monospace;
 
   --wrap: 1120px;
-  --dur: 160ms;
+  --dur: 140ms;
 }
 
 * { box-sizing: border-box; }
@@ -52,8 +62,8 @@ img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3 { margin: 0; letter-spacing: -0.015em; line-height: 1.15; text-wrap: balance; }
 
 h1 { font-size: clamp(2rem, 1.35rem + 2.4vw, 3.25rem); }
-h2 { font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.125rem); }
-h3 { font-size: 1.1875rem; letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.75rem, 1.25rem + 1.9vw, 2.5rem); letter-spacing: -0.028em; line-height: 1.08; }
+h3 { font-size: 1.1875rem; letter-spacing: -0.01em; }
 
 p { margin: 0; }
 
@@ -84,6 +94,27 @@ a { color: inherit; }
 }
 .wrap--narrow { max-width: 780px; }
 
+/* ── reveal (hanya aktif kalau JS jalan; hero tidak ikut) ──── */
+html.js .reveal {
+  --rd: 0ms;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-reveal) var(--ease) var(--rd),
+    transform var(--dur-reveal) var(--ease) var(--rd);
+}
+html.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* stagger grid: 45 ms per langkah, maksimal 5 langkah */
+html.js .steps > li:nth-child(2),
+html.js .shots > li:nth-child(2),
+html.js .cards > li:nth-child(2) { --rd: 45ms; }
+html.js .steps > li:nth-child(3),
+html.js .shots > li:nth-child(3),
+html.js .cards > li:nth-child(3) { --rd: 90ms; }
+html.js .cards > li:nth-child(4) { --rd: 135ms; }
+html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
+
 /* ── bilah atas ───────────────────────────────────────────── */
 .bar {
   position: sticky;
@@ -92,6 +123,11 @@ a { color: inherit; }
   background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  transition: box-shadow var(--dur-acc) var(--ease), border-color var(--dur-acc) var(--ease);
+}
+.bar.is-scrolled {
+  box-shadow: var(--shadow-3);
+  border-bottom-color: transparent;
 }
 .bar__in {
   display: flex;
@@ -113,14 +149,31 @@ a { color: inherit; }
   font-size: 0.9375rem;
 }
 .nav a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   padding: 0 var(--s3);
   text-decoration: none;
   color: var(--ink-2);
+  transition: color var(--dur) var(--ease);
 }
-.nav a:hover { color: var(--ink); }
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: var(--s3);
+  right: var(--s3);
+  bottom: 9px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease);
+}
+@media (hover: hover) {
+  .nav a:hover { color: var(--ink); }
+  .nav a:hover::after { transform: scaleX(1); }
+}
 
 /* ── tombol ───────────────────────────────────────────────── */
 .btn {
@@ -135,12 +188,18 @@ a { color: inherit; }
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background var(--dur), border-color var(--dur), color var(--dur);
+  transition:
+    background var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 .btn--primary { background: var(--brick); color: #fff; }
-.btn--primary:hover { background: var(--brick-deep); }
 .btn--ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
-.btn--ghost:hover { border-color: var(--ink-2); }
+@media (hover: hover) {
+  .btn--primary:hover { background: var(--brick-deep); box-shadow: var(--shadow-1); }
+  .btn--ghost:hover { border-color: var(--ink-2); background: var(--paper-2); }
+}
 .btn--sm { min-height: 44px; padding: 0 var(--s4); font-size: 0.9375rem; }
 .btn--lg { min-height: 56px; padding: 0 var(--s6); }
 
@@ -148,8 +207,30 @@ a { color: inherit; }
 .link:hover { text-decoration-thickness: 2px; }
 
 /* ── hero ─────────────────────────────────────────────────── */
-.hero { padding: var(--s8) 0 var(--s7); }
+.hero {
+  position: relative;
+  overflow: clip; /* bentuk latar tidak boleh menambah lebar halaman */
+  padding: var(--s8) 0 var(--s7);
+  background:
+    radial-gradient(1100px 460px at 82% 22%, rgb(154 52 18 / 0.07), transparent 64%),
+    linear-gradient(180deg, var(--paper-2), var(--paper) 78%);
+}
+/* satu bentuk organik samar di belakang screenshot */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 2%;
+  top: 4%;
+  width: min(38rem, 52vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(154 52 18 / 0.10), rgb(154 52 18 / 0.05) 40%, rgb(154 52 18 / 0.015) 64%, transparent 84%);
+  pointer-events: none;
+}
 .hero__in {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
   gap: var(--s7);
@@ -188,6 +269,7 @@ a { color: inherit; }
   border: 1px solid var(--line);
   border-radius: var(--r2);
   padding: var(--s2);
+  box-shadow: var(--shadow-3);
 }
 .frame img {
   border-radius: var(--r1);
@@ -202,8 +284,8 @@ a { color: inherit; }
   padding: var(--s3) var(--s2) var(--s1);
 }
 
-/* ── pita (latar krem) ────────────────────────────────────── */
-.band { background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--s8) 0; }
+/* ── pita (latar krem) — satu-satunya variasi latar seksi ─── */
+.band { background: var(--paper-3); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--s8) 0; }
 
 /* ── langkah ──────────────────────────────────────────────── */
 .steps {
@@ -234,7 +316,7 @@ a { color: inherit; }
 /* ── seksi umum ───────────────────────────────────────────── */
 .section { padding: var(--s8) 0; }
 .section--tight { padding: var(--s7) 0; border-top: 1px solid var(--line); }
-.section__lead { margin-top: var(--s3); color: var(--ink-2); max-width: 58ch; }
+.section__lead { margin-top: var(--s3); color: var(--ink-2); font-size: 1rem; max-width: 58ch; }
 
 /* ── kartu fitur ──────────────────────────────────────────── */
 .cards {
@@ -252,6 +334,27 @@ a { color: inherit; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-1);
+  transition:
+    box-shadow var(--dur) var(--ease),
+    translate var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+/* reveal pakai transform, hover pakai translate — dua properti, tidak bentrok */
+html.js .card.reveal {
+  transition:
+    opacity var(--dur-reveal) var(--ease) var(--rd),
+    transform var(--dur-reveal) var(--ease) var(--rd),
+    box-shadow var(--dur) var(--ease),
+    translate var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+@media (hover: hover) {
+  .card:hover {
+    translate: 0 -2px;
+    box-shadow: var(--shadow-2);
+    border-color: var(--paper-3);
+  }
 }
 .card img {
   width: 100%;
@@ -265,6 +368,16 @@ a { color: inherit; }
 .card:nth-child(2) img { object-position: center; }
 .card__body { padding: var(--s4) var(--s4) var(--s5); }
 .card h3 { margin-bottom: var(--s2); }
+/* pemisah judul ↔ gambar: garis aksen pendek */
+.card h3::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--brick);
+  margin-bottom: var(--s3);
+}
 .card p { font-size: 0.9375rem; color: var(--ink-2); }
 
 /* ── tangkapan layar besar ────────────────────────────────── */
@@ -279,7 +392,7 @@ a { color: inherit; }
   width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--r2);
-  box-shadow: 0 6px 24px rgb(28 25 23 / 0.07);
+  box-shadow: var(--shadow-1);
 }
 .shots__cap {
   margin-top: var(--s3);
@@ -322,8 +435,19 @@ a { color: inherit; }
   font-size: 1.25rem;
   color: var(--brick-deep);
   line-height: 1;
+  transition: transform var(--dur-acc) var(--ease);
 }
-.faq details[open] summary::after { content: "−"; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+
+/* tinggi jawaban dianimasikan lewat grid 0fr → 1fr (hanya saat JS aktif) */
+.faq__a { display: grid; grid-template-rows: 1fr; }
+.faq__a > div { overflow: hidden; }
+html.js .faq__a {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-acc) var(--ease);
+}
+html.js .faq details.is-open .faq__a { grid-template-rows: 1fr; }
+
 .faq details p {
   padding: 0 0 var(--s5);
   color: var(--ink-2);
@@ -363,6 +487,7 @@ a { color: inherit; }
 @media (max-width: 960px) {
   .hero__in { grid-template-columns: 1fr; gap: var(--s6); }
   .hero h1 { max-width: 16ch; }
+  .hero::before { width: min(28rem, 76vw); right: -8%; top: 0; }
   .steps, .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .closing__in { grid-template-columns: 1fr; }
   .closing__act { text-align: left; }
@@ -381,6 +506,11 @@ a { color: inherit; }
   .btn--lg { width: 100%; }
 }
 
+/* ── gerak dimatikan: semua transisi 0s, reveal langsung terlihat ── */
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  html.js .reveal { opacity: 1; transform: none; }
 }

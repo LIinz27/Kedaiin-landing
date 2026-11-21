@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kedaiin — kasir, dapur, dan laporan dalam satu PC</title>
 <meta name="description" content="Kasir resto, tiket dapur, stok, dan laporan penjualan dalam satu PC di meja kasir. Tetap jalan tanpa internet. Minta demo lewat WhatsApp.">
@@ -13,6 +14,7 @@
 <meta property="og:url" content="https://kedaiin.id/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#isi">Lompat ke isi</a>
@@ -63,17 +65,17 @@
       <p class="eyebrow">Cara kerja</p>
       <h2>Tiga langkah, selesai.</h2>
       <ol class="steps">
-        <li>
+        <li class="reveal">
           <span class="steps__n">01</span>
           <h3>Pasang di satu PC kasir</h3>
           <p>Installer memasang Kedaiin di PC Windows di meja kasir. Server ikut menyala sendiri setiap PC dinyalakan.</p>
         </li>
-        <li>
+        <li class="reveal">
           <span class="steps__n">02</span>
           <h3>Kasir &amp; pelayan buka dari browser atau tablet</h3>
           <p>Perangkat lain di jaringan yang sama — WiFi atau kabel warung — membuka alamat PC kasir. Tidak perlu pasang aplikasi di tiap perangkat.</p>
         </li>
-        <li>
+        <li class="reveal">
           <span class="steps__n">03</span>
           <h3>Pemilik buka laporan</h3>
           <p>Omzet hari ini, jam tersibuk, menu terlaris, laba kotor, dan kas tiap shift. Bisa diunduh sebagai CSV.</p>
@@ -89,42 +91,42 @@
       <p class="section__lead">Semua tangkapan layar di bawah diambil dari aplikasi Kedaiin versi 1.2.1, dengan data contoh.</p>
 
       <ul class="cards">
-        <li class="card">
+        <li class="card reveal">
           <img src="assets/kasir-meja.webp" width="1200" height="750" alt="Peta meja Kedaiin: meja kosong, meja terisi dengan total bill, dan meja yang sudah minta bill" loading="lazy">
           <div class="card__body">
             <h3>Meja &amp; bill</h3>
             <p>Sekali lihat: meja mana kosong, mana yang sedang makan, mana yang sudah minta bill. Bill bisa dipisah, digabung, atau dipindah meja.</p>
           </div>
         </li>
-        <li class="card">
+        <li class="card reveal">
           <img src="assets/printer.webp" width="1100" height="688" alt="Pengaturan printer Kedaiin: printer kasir, dapur, dan bar masing-masing dengan alamat jaringan" loading="lazy">
           <div class="card__body">
             <h3>Cetak ke printer dapur &amp; bar</h3>
             <p>Tiket pesanan langsung ke printer dapur dan bar sesuai kategori menu. Bill dan struk pelanggan ke printer kasir.</p>
           </div>
         </li>
-        <li class="card">
+        <li class="card reveal">
           <img src="assets/stok.webp" width="1200" height="750" alt="Daftar bahan di Kedaiin: jumlah stok, batas minimum, harga pokok, dan tanda bahan yang menipis" loading="lazy">
           <div class="card__body">
             <h3>Stok &amp; resep</h3>
             <p>Isi bahan dan resep tiap menu; penjualan mengurangi stok sendiri. Bahan yang menipis ditandai sebelum habis di tengah jam ramai.</p>
           </div>
         </li>
-        <li class="card">
+        <li class="card reveal">
           <img src="assets/shift.webp" width="1200" height="750" alt="Layar shift Kedaiin: kas awal, penjualan tunai, jumlah yang seharusnya ada di laci, dan tombol tutup shift" loading="lazy">
           <div class="card__body">
             <h3>Shift &amp; laci kas</h3>
             <p>Buka shift dengan kas awal, catat kas masuk, kas keluar, dan setoran. Saat tutup shift, uang fisik dihitung dan selisihnya langsung terlihat.</p>
           </div>
         </li>
-        <li class="card">
+        <li class="card reveal">
           <img src="assets/laporan.webp" width="1200" height="750" alt="Laporan penjualan Kedaiin: grafik omzet per jam dengan jam tersibuk ditandai" loading="lazy">
           <div class="card__body">
             <h3>Laporan penjualan</h3>
             <p>Omzet per jam, menu terlaris, laba kotor, penjualan per kasir dan per meja. Tanpa perlu rekap manual di buku.</p>
           </div>
         </li>
-        <li class="card">
+        <li class="card reveal">
           <img src="assets/offline.webp" width="1200" height="750" alt="Layar kasir Kedaiin saat sambungan putus: pita merah mode offline dan pesan tidak ada koneksi, tombol bayar tetap aktif" loading="lazy">
           <div class="card__body">
             <h3>Tetap jalan tanpa internet</h3>
@@ -140,15 +142,15 @@
       <p class="eyebrow">Tampilan</p>
       <h2>Tiga layar yang paling sering dibuka.</h2>
       <ul class="shots">
-        <li>
+        <li class="reveal">
           <img src="assets/tampilan-kasir.webp" width="1800" height="1125" alt="Layar kasir Kedaiin: ringkasan omzet hari ini, peta meja, dan ringkasan shift di kanan" loading="lazy">
           <p class="shots__cap"><b>Kasir.</b> Omzet hari ini, meja, dan ringkasan shift dalam satu layar.</p>
         </li>
-        <li>
+        <li class="reveal">
           <img src="assets/tampilan-laporan.webp" width="1800" height="1125" alt="Layar laporan Kedaiin: omzet, jumlah transaksi, cara bayar, dan ringkasan shift" loading="lazy">
           <p class="shots__cap"><b>Laporan.</b> Omzet, jumlah transaksi, dan cara bayar per hari.</p>
         </li>
-        <li>
+        <li class="reveal">
           <img src="assets/tampilan-pengaturan.webp" width="1800" height="1125" alt="Layar pengaturan Kedaiin: lisensi, aplikasi tablet, printer per stasiun, dan identitas struk" loading="lazy">
           <p class="shots__cap"><b>Pengaturan.</b> Printer per stasiun, identitas struk, dan cadangan data.</p>
         </li>
@@ -182,23 +184,23 @@
       <div class="faq">
         <details>
           <summary>Butuh internet tidak?</summary>
-          <p>Tidak. Kasir, pesanan, cetak struk, dan laporan berjalan di jaringan lokal — cukup router atau WiFi di warung. Internet hanya dipakai untuk memeriksa versi baru dan mengunduh aplikasi tablet.</p>
+          <div class="faq__a"><div><p>Tidak. Kasir, pesanan, cetak struk, dan laporan berjalan di jaringan lokal — cukup router atau WiFi di warung. Internet hanya dipakai untuk memeriksa versi baru dan mengunduh aplikasi tablet.</p></div></div>
         </details>
         <details>
           <summary>PC-nya harus apa?</summary>
-          <p>Windows 10 atau 11, 64-bit. RAM 4 GB sudah jalan (8 GB lebih nyaman), ruang kosong sekitar 1 GB, dan PC tersambung ke router. Windows 7 dan 8 tidak didukung.</p>
+          <div class="faq__a"><div><p>Windows 10 atau 11, 64-bit. RAM 4 GB sudah jalan (8 GB lebih nyaman), ruang kosong sekitar 1 GB, dan PC tersambung ke router. Windows 7 dan 8 tidak didukung.</p></div></div>
         </details>
         <details>
           <summary>Data disimpan di mana?</summary>
-          <p>Di PC kasir itu sendiri, bukan di internet. Installer juga membuat cadangan harian otomatis pukul 03.00, dan cadangan bisa dibuat manual dari halaman Pengaturan.</p>
+          <div class="faq__a"><div><p>Di PC kasir itu sendiri, bukan di internet. Installer juga membuat cadangan harian otomatis pukul 03.00, dan cadangan bisa dibuat manual dari halaman Pengaturan.</p></div></div>
         </details>
         <details>
           <summary>Kalau listrik mati?</summary>
-          <p>Setelah PC dinyalakan lagi, Kedaiin menyala sendiri dan transaksi terakhir tetap ada. Kami menyarankan UPS 600 VA: listrik mati tepat saat transaksi berisiko merusak berkas data.</p>
+          <div class="faq__a"><div><p>Setelah PC dinyalakan lagi, Kedaiin menyala sendiri dan transaksi terakhir tetap ada. Kami menyarankan UPS 600 VA: listrik mati tepat saat transaksi berisiko merusak berkas data.</p></div></div>
         </details>
         <details>
           <summary>Bisa dicetak ke printer apa?</summary>
-          <p>Printer thermal 58 mm (ESC/POS). Printer kasir boleh LAN, USB, atau Bluetooth; printer dapur dan bar sebaiknya LAN, karena di sana tidak ada PC yang bisa mencetak.</p>
+          <div class="faq__a"><div><p>Printer thermal 58 mm (ESC/POS). Printer kasir boleh LAN, USB, atau Bluetooth; printer dapur dan bar sebaiknya LAN, karena di sana tidak ada PC yang bisa mencetak.</p></div></div>
         </details>
       </div>
     </div>
