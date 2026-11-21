@@ -1,7 +1,8 @@
 # Kedaiin — halaman marketing
 
-Halaman statis satu kolom: `index.html` + `styles.css` + `assets/`. Tanpa framework,
-tanpa build step, tanpa JavaScript (FAQ memakai `<details>` bawaan HTML).
+Halaman statis satu kolom: `index.html` + `styles.css` + `main.js` + `assets/`. Tanpa framework,
+tanpa build step, tanpa library. `main.js` (~2,7 KB) hanya untuk reveal, accordion FAQ, dan
+lightbox gambar (klik gambar → overlay ukuran penuh; `Escape`/×/klik latar menutup).
 
 ## Melihat di lokal
 
@@ -24,19 +25,24 @@ tampilan → harga → kata pemilik resto → tanya jawab → penutup.
 
 | Berkas | Dipakai di | Ukuran |
 |---|---|---|
-| `assets/hero-bill.webp` | hero | 1280×800 |
-| `assets/kasir-meja.webp` | kartu "Meja & bill" | 1200×750 |
-| `assets/printer.webp` | kartu "Cetak ke printer dapur & bar" | 1200×750 |
-| `assets/stok.webp` | kartu "Stok & resep" | 1200×750 |
-| `assets/shift.webp` | kartu "Shift & laci kas" | 1200×750 |
-| `assets/laporan.webp` | kartu "Laporan penjualan" | 1200×750 |
-| `assets/offline.webp` | kartu "Tetap jalan tanpa internet" | 1200×750 |
-| `assets/tampilan-kasir.webp` | bagian Tampilan | 1800×1125 |
-| `assets/tampilan-laporan.webp` | bagian Tampilan | 1800×1125 |
-| `assets/tampilan-pengaturan.webp` | bagian Tampilan | 1800×1125 |
+| `assets/hero-bill.webp` | hero (dan lightbox) | 1000×625 |
+| `assets/fitur-kasir-meja-crop.webp` | kartu "Meja & bill" | 460×288 |
+| `assets/fitur-printer-crop.webp` | kartu "Cetak ke printer dapur & bar" | 460×288 |
+| `assets/fitur-stok-crop.webp` | kartu "Stok & resep" | 460×288 |
+| `assets/fitur-shift-crop.webp` | kartu "Shift & laci kas" | 460×288 |
+| `assets/fitur-laporan-crop.webp` | kartu "Laporan penjualan" | 460×288 |
+| `assets/fitur-offline-crop.webp` | kartu "Tetap jalan tanpa internet" | 460×288 |
+| `assets/kasir-meja.webp`, `printer.webp`, `stok.webp`, `shift.webp`, `laporan.webp`, `offline.webp` | hanya lightbox (`data-full` di kartu) | 1200×750 |
+| `assets/tampilan-kasir.webp` | bagian Tampilan | 1280×800 |
+| `assets/tampilan-laporan.webp` | bagian Tampilan | 1280×800 |
+| `assets/tampilan-pengaturan.webp` | bagian Tampilan | 1280×800 |
 | `assets/og.jpg` | pratinjau tautan (og:image) | 1200×630 |
 
-Aturan gambar: WebP/JPEG, maksimal 200 KB per berkas, lebar 2× dari lebar tampil.
+Kartu Fitur memakai potongan detail (crop) supaya teks di dalam tangkapan layar terbaca;
+berkas 1200×750 tetap disimpan sebagai gambar ukuran penuh di lightbox.
+
+Aturan gambar: WebP/JPEG, maksimal 200 KB per berkas, skala tampil ≥ 0,6 (kartu fitur),
+≥ 0,75 (Tampilan), ≥ 0,55 (hero) diukur `displayedWidth / naturalWidth` pada 1280 px.
 Ganti `width`/`height` di `index.html` bila rasio gambar berubah, dan perbarui `alt`.
 `og.html` adalah sumber `assets/og.jpg` — ubah di situ lalu tangkap ulang 1200×630.
 

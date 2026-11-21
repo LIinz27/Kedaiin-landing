@@ -234,7 +234,7 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
   gap: var(--s7);
   align-items: end;
 }
@@ -331,6 +331,26 @@ html.js .cards > li:nth-child(n + 5) { --rd: 180ms; }
 .section { padding: var(--s8) 0; }
 .section--tight { padding: var(--s7) 0; border-top: 1px solid var(--line); }
 .section__lead { margin-top: var(--s3); color: var(--ink-2); font-size: 1rem; max-width: 58ch; }
+.hint {
+  margin-top: var(--s2);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+
+/* tombol pembungkus gambar: seluruh gambar bisa diklik untuk ukuran penuh */
+.shot {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: zoom-in;
+}
 
 /* ── kartu fitur ──────────────────────────────────────────── */
 .cards {
@@ -540,6 +560,45 @@ html.js .faq details.is-open .faq__a { grid-template-rows: 1fr; }
   .frame { padding: 6px; }
   .btn--lg { width: 100%; }
 }
+
+/* ── lightbox: satu overlay untuk semua tangkapan layar ───── */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: var(--s5);
+  background: rgb(20 16 14 / 0.82);
+}
+.lb[hidden] { display: none; }
+.lb__img {
+  max-width: 92vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  image-rendering: auto;
+  border-radius: 8px;
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.5);
+}
+.lb__x {
+  position: absolute;
+  top: var(--s4);
+  right: var(--s4);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #fff;
+  background: rgb(20 16 14 / 0.55);
+  border: 1px solid rgb(255 255 255 / 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+}
+/* halaman tidak boleh ikut bergulir selama overlay terbuka */
+html.lb-open, body.lb-open { overflow: hidden; }
 
 /* ── gerak dimatikan: semua transisi 0s, reveal langsung terlihat ── */
 @media (prefers-reduced-motion: reduce) {

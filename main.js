@@ -39,4 +39,32 @@
       }
     });
   });
+
+  // 4. Lightbox: klik gambar → overlay ukuran penuh (Esc/×/latar menutup, fokus balik)
+  var lb = document.getElementById('lb');
+  var lbImg = lb.querySelector('.lb__img');
+  var lbX = lb.querySelector('.lb__x');
+  var trigger = null;
+  function closeLb() {
+    if (lb.hidden) return;
+    lb.hidden = true;
+    document.documentElement.classList.remove('lb-open');
+    document.body.classList.remove('lb-open');
+    if (trigger) { trigger.focus(); trigger = null; }
+  }
+  document.querySelectorAll('.shot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var img = btn.querySelector('img');
+      trigger = btn;
+      lbImg.src = btn.dataset.full || img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lb.setAttribute('aria-label', img.alt);
+      lb.hidden = false;
+      document.documentElement.classList.add('lb-open');
+      document.body.classList.add('lb-open');
+      lbX.focus();
+    });
+  });
+  lb.addEventListener('click', function (ev) { if (ev.target !== lbImg) closeLb(); });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeLb(); });
 })();

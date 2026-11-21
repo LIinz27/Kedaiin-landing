@@ -51,11 +51,13 @@
       </div>
 
       <figure class="frame">
-        <picture>
-          <source media="(max-width: 680px)" srcset="assets/hero-bill-hp.webp" width="840" height="1139">
-          <img src="assets/hero-bill.webp" width="1280" height="800" alt="Layar pesanan Kedaiin: daftar menu di kiri, bill Meja 1 dengan 3 item, pajak, dan total Rp 79.200 di kanan">
-        </picture>
-        <figcaption>Bill satu meja: item, catatan dapur, pajak, dan total dalam satu panel.</figcaption>
+        <button class="shot" type="button" aria-label="Perbesar: layar pesanan Kedaiin">
+          <picture>
+            <source media="(max-width: 680px)" srcset="assets/hero-bill-hp.webp" width="840" height="1139">
+            <img src="assets/hero-bill.webp" width="1000" height="625" alt="Layar pesanan Kedaiin: daftar menu di kiri, bill Meja 1 dengan 3 item, pajak, dan total Rp 79.200 di kanan">
+          </picture>
+        </button>
+        <figcaption>Bill satu meja: item, catatan dapur, pajak, dan total dalam satu panel. Klik untuk ukuran penuh.</figcaption>
       </figure>
     </div>
   </section>
@@ -89,45 +91,58 @@
       <p class="eyebrow">Fitur inti</p>
       <h2>Yang dipakai tiap hari di warung.</h2>
       <p class="section__lead">Semua tangkapan layar di bawah diambil dari aplikasi Kedaiin versi 1.2.1, dengan data contoh.</p>
+      <p class="hint">Klik gambar untuk ukuran penuh.</p>
 
       <ul class="cards">
         <li class="card reveal">
-          <img src="assets/kasir-meja.webp" width="1200" height="750" alt="Peta meja Kedaiin: meja kosong, meja terisi dengan total bill, dan meja yang sudah minta bill" loading="lazy">
+          <button class="shot" type="button" data-full="assets/kasir-meja.webp">
+            <img src="assets/fitur-kasir-meja-crop.webp" width="460" height="288" alt="Peta meja Kedaiin: Meja 1 dengan Bill #A-1 senilai Rp 72.000, Meja 2 kosong, Meja 3 ditandai dengan Rp 42.000" loading="lazy">
+          </button>
           <div class="card__body">
             <h3>Meja &amp; bill</h3>
             <p>Sekali lihat: meja mana kosong, mana yang sedang makan, mana yang sudah minta bill. Bill bisa dipisah, digabung, atau dipindah meja.</p>
           </div>
         </li>
         <li class="card reveal">
-          <img src="assets/printer.webp" width="1100" height="688" alt="Pengaturan printer Kedaiin: printer kasir, dapur, dan bar masing-masing dengan alamat jaringan" loading="lazy">
+          <button class="shot" type="button" data-full="assets/printer.webp">
+            <img src="assets/fitur-printer-crop.webp" width="460" height="288" alt="Pengaturan printer Kedaiin: printer kasir 192.168.1.50:9100, dapur .51, bar .52, masing-masing dengan tombol Tes cetak" loading="lazy">
+          </button>
           <div class="card__body">
             <h3>Cetak ke printer dapur &amp; bar</h3>
             <p>Tiket pesanan langsung ke printer dapur dan bar sesuai kategori menu. Bill dan struk pelanggan ke printer kasir.</p>
           </div>
         </li>
         <li class="card reveal">
-          <img src="assets/stok.webp" width="1200" height="750" alt="Daftar bahan di Kedaiin: jumlah stok, batas minimum, harga pokok, dan tanda bahan yang menipis" loading="lazy">
+          <button class="shot" type="button" data-full="assets/stok.webp">
+            <img src="assets/fitur-stok-crop.webp" width="460" height="288" alt="Daftar bahan di Kedaiin: Ayam 6,5 kg, Beras 22 kg, Gula 7 kg, Jeruk 5 kg, Keju 1,2 kg, Kopi bubuk 0,4 kg, dengan harga pokok per satuan" loading="lazy">
+          </button>
           <div class="card__body">
             <h3>Stok &amp; resep</h3>
             <p>Isi bahan dan resep tiap menu; penjualan mengurangi stok sendiri. Bahan yang menipis ditandai sebelum habis di tengah jam ramai.</p>
           </div>
         </li>
         <li class="card reveal">
-          <img src="assets/shift.webp" width="1200" height="750" alt="Layar shift Kedaiin: kas awal, penjualan tunai, jumlah yang seharusnya ada di laci, dan tombol tutup shift" loading="lazy">
+          <button class="shot" type="button" data-full="assets/shift.webp">
+            <img src="assets/fitur-shift-crop.webp" width="460" height="288" alt="Layar tutup shift Kedaiin: modal awal Rp 300.000, penjualan tunai Rp 177.100, seharusnya di laci Rp 477.100" loading="lazy">
+          </button>
           <div class="card__body">
             <h3>Shift &amp; laci kas</h3>
             <p>Buka shift dengan kas awal, catat kas masuk, kas keluar, dan setoran. Saat tutup shift, uang fisik dihitung dan selisihnya langsung terlihat.</p>
           </div>
         </li>
         <li class="card reveal">
-          <img src="assets/laporan.webp" width="1200" height="750" alt="Laporan penjualan Kedaiin: grafik omzet per jam dengan jam tersibuk ditandai" loading="lazy">
+          <button class="shot" type="button" data-full="assets/laporan.webp">
+            <img src="assets/fitur-laporan-crop.webp" width="460" height="288" alt="Laporan penjualan Kedaiin: grafik omzet per jam dari pukul 11 sampai 21, batang jam 13 ditandai tersibuk" loading="lazy">
+          </button>
           <div class="card__body">
             <h3>Laporan penjualan</h3>
             <p>Omzet per jam, menu terlaris, laba kotor, penjualan per kasir dan per meja. Tanpa perlu rekap manual di buku.</p>
           </div>
         </li>
         <li class="card reveal">
-          <img src="assets/offline.webp" width="1200" height="750" alt="Layar kasir Kedaiin saat sambungan putus: pita merah mode offline dan pesan tidak ada koneksi, tombol bayar tetap aktif" loading="lazy">
+          <button class="shot" type="button" data-full="assets/offline.webp">
+            <img src="assets/fitur-offline-crop.webp" width="460" height="288" alt="Layar kasir Kedaiin saat sambungan putus: total bill Rp 79.200, pesan tidak ada koneksi, kirim ke dapur nonaktif, tombol Bayar tetap aktif" loading="lazy">
+          </button>
           <div class="card__body">
             <h3>Tetap jalan tanpa internet</h3>
             <p>Internet tidak dipakai untuk berjualan. Kalau sambungan ke PC kasir putus, pesanan disimpan di perangkat dan dikirim sendiri saat tersambung lagi.</p>
@@ -141,17 +156,24 @@
     <div class="wrap">
       <p class="eyebrow">Tampilan</p>
       <h2>Tiga layar yang paling sering dibuka.</h2>
+      <p class="hint">Klik gambar untuk ukuran penuh.</p>
       <ul class="shots">
         <li class="reveal">
-          <img src="assets/tampilan-kasir.webp" width="1800" height="1125" alt="Layar kasir Kedaiin: ringkasan omzet hari ini, peta meja, dan ringkasan shift di kanan" loading="lazy">
+          <button class="shot" type="button">
+            <img src="assets/tampilan-kasir.webp" width="1280" height="800" alt="Layar kasir Kedaiin: ringkasan omzet hari ini, peta meja, dan ringkasan shift di kanan" loading="lazy">
+          </button>
           <p class="shots__cap"><b>Kasir.</b> Omzet hari ini, meja, dan ringkasan shift dalam satu layar.</p>
         </li>
         <li class="reveal">
-          <img src="assets/tampilan-laporan.webp" width="1800" height="1125" alt="Layar laporan Kedaiin: omzet, jumlah transaksi, cara bayar, dan ringkasan shift" loading="lazy">
+          <button class="shot" type="button">
+            <img src="assets/tampilan-laporan.webp" width="1280" height="800" alt="Layar laporan Kedaiin: omzet, jumlah transaksi, cara bayar, dan ringkasan shift" loading="lazy">
+          </button>
           <p class="shots__cap"><b>Laporan.</b> Omzet, jumlah transaksi, dan cara bayar per hari.</p>
         </li>
         <li class="reveal">
-          <img src="assets/tampilan-pengaturan.webp" width="1800" height="1125" alt="Layar pengaturan Kedaiin: lisensi, aplikasi tablet, printer per stasiun, dan identitas struk" loading="lazy">
+          <button class="shot" type="button">
+            <img src="assets/tampilan-pengaturan.webp" width="1280" height="800" alt="Layar pengaturan Kedaiin: lisensi, aplikasi tablet, printer per stasiun, dan identitas struk" loading="lazy">
+          </button>
           <p class="shots__cap"><b>Pengaturan.</b> Printer per stasiun, identitas struk, dan cadangan data.</p>
         </li>
       </ul>
@@ -228,6 +250,11 @@
     <p>WhatsApp 0895-4152-04242</p>
   </div>
 </footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gambar ukuran penuh" hidden>
+  <button class="lb__x" type="button" aria-label="Tutup gambar">×</button>
+  <img class="lb__img" src="assets/hero-bill.webp" alt="">
+</div>
 
 </body>
 </html>
