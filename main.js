@@ -58,6 +58,7 @@
       trigger = btn;
       lbImg.src = btn.dataset.full || img.currentSrc || img.src;
       lbImg.alt = img.alt;
+      lb.setAttribute('role', 'dialog');
       lb.setAttribute('aria-label', img.alt);
       lb.hidden = false;
       document.documentElement.classList.add('lb-open');
