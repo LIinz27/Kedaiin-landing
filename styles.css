@@ -670,6 +670,134 @@ html.js .faq details.is-open .faq__a { grid-template-rows: 1fr; }
 /* halaman tidak boleh ikut bergulir selama overlay terbuka */
 html.lb-open, body.lb-open { overflow: hidden; }
 
+
+/* ── apa yang baru (rilis) ─────────────────────────────────── */
+.changes {
+  list-style: none;
+  margin: var(--s6) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s5);
+}
+.changes li {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r2);
+  padding: var(--s5);
+  box-shadow: var(--shadow-1);
+}
+.changes__tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px var(--s2);
+  margin-bottom: var(--s3);
+}
+.changes__tag--new {
+  color: #fff;
+  background: var(--brick);
+  border-color: var(--brick);
+}
+.changes h3 { margin-bottom: var(--s2); }
+.changes p:not(.changes__tag) { font-size: 0.9375rem; color: var(--ink-2); }
+/* dua tangkapan layar di seksi ini memakai pola .shots yang sudah ada */
+
+/* ── unduhan: tiga kartu per peran ─────────────────────────── */
+.dl {
+  list-style: none;
+  margin: var(--s6) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s5);
+  align-items: stretch;
+}
+.dl__card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r2);
+  padding: var(--s5);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--dur) var(--ease), translate var(--dur) var(--ease);
+}
+@media (hover: hover) {
+  .dl__card:hover { translate: 0 -2px; box-shadow: var(--shadow-2); }
+}
+/* kartu yang dianjurkan diberi penanda, bukan warna latar berbeda */
+.dl__card--main { border-top: 2px solid var(--brick); }
+.dl__k {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick-deep);
+  margin-bottom: var(--s3);
+}
+.dl__card h3 { margin-bottom: var(--s2); }
+.dl__card p:not(.dl__k, .dl__alt, .dl__act) { font-size: 0.9375rem; color: var(--ink-2); }
+.dl__alt {
+  margin-top: var(--s2);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.dl__alt .link { display: inline-block; padding: 6px 0; } /* sasaran sentuh ≥ 40 px */
+.dl__act { margin-top: auto; padding-top: var(--s5); }
+.dl__act .btn { width: 100%; }
+
+/* baris jujur: peringatan SmartScreen — sengaja di seksi unduhan, bukan di halaman lain */
+.note-warn {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  margin-top: var(--s5);
+  padding: var(--s4) var(--s5);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brick);
+  border-radius: var(--r1);
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+.note-warn svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  color: var(--brick-deep);
+}
+.note-warn b { font-variant-numeric: normal; }
+
+@media (max-width: 960px) {
+  .dl { grid-template-columns: 1fr; }
+  .dl__act .btn { width: auto; }
+}
+@media (max-width: 680px) {
+  .changes { grid-template-columns: 1fr; }
+  .dl__act .btn { width: 100%; }
+  .note-warn { padding: var(--s4); }
+}
+/* reveal + hover pada kartu unduhan: dua properti, tidak saling menimpa */
+html.js .dl__card.reveal {
+  transition:
+    opacity var(--dur-reveal) var(--ease) var(--rd),
+    transform var(--dur-reveal) var(--ease) var(--rd),
+    box-shadow var(--dur) var(--ease),
+    translate var(--dur) var(--ease);
+}
+html.js .changes > li:nth-child(2),
+html.js .dl > li:nth-child(2) { --rd: 45ms; }
+html.js .changes > li:nth-child(3),
+html.js .dl > li:nth-child(3) { --rd: 90ms; }
+html.js .changes > li:nth-child(4) { --rd: 135ms; }
+
 /* ── gerak dimatikan: semua transisi 0s, reveal langsung terlihat ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
