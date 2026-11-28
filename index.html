@@ -183,25 +183,25 @@
 
   <section class="section" id="baru">
     <div class="wrap">
-      <p class="eyebrow">Rilis 1.2.8 · 28 November 2026</p>
-      <h2>Apa yang baru di 1.2.8</h2>
-      <p class="section__lead">Pembaruan ini soal pembaruan aplikasi itu sendiri: dulu layar bisa diam di “sedang memasang” lalu server mati. Sekarang prosesnya terlihat, berhenti dengan pesan jelas kalau gagal, dan server hidup lagi sendiri.</p>
+      <p class="eyebrow">Rilis 1.2.9 · 28 November 2026</p>
+      <h2>Apa yang baru di 1.2.9</h2>
+      <p class="section__lead">Pembaruan ini masih soal memasang pembaruan, tapi sekarang di bagian yang paling sering bikin gagal tanpa jejak: berkas skrip yang tidak ikut diperbarui, penjaga otomatis yang menyalakan server di tengah proses, dan pemasangan gagal yang tidak meninggalkan catatan apa pun.</p>
 
       <ul class="changes">
         <li class="reveal">
           <p class="changes__tag changes__tag--new">Pembaruan</p>
-          <h3>Pembaruan lewat aplikasi sekarang benar-benar berjalan</h3>
-          <p>Layar pembaruan menampilkan tahap yang sedang dikerjakan beserta lima baris log terakhir, jadi terlihat aplikasi memang bekerja. Kalau ada yang gagal, proses berhenti dengan pesan yang jelas — tidak lagi diam di “sedang memasang”.</p>
+          <h3>Pembaruan dalam aplikasi membawa skrip pemasangnya sendiri</h3>
+          <p>Dulu berkas skrip pemasang di komputer resto tidak ikut diperbarui, sehingga pembaruan bisa gagal sebelum sempat mulai. Sekarang pembaruan membawa skripnya sendiri, jadi yang dipakai selalu versi yang cocok dengan aplikasi yang sedang dipasang.</p>
         </li>
         <li class="reveal">
           <p class="changes__tag">Server</p>
-          <h3>Server hidup kembali sendiri setelah pembaruan</h3>
-          <p>Setelah pembaruan selesai, server di PC resto menyala ulang otomatis dan kasir bisa langsung memakai lagi. Dulu server bisa tetap mati, sehingga resto kehilangan akses sampai dinyalakan manual.</p>
+          <h3>Penjaga otomatis berhenti sejenak saat memasang</h3>
+          <p>Penjaga otomatis (watchdog) adalah program kecil yang menyalakan server lagi kalau server mati. Sekarang ia berhenti sejenak selama pemasangan berjalan, jadi tidak lagi menyalakan server di tengah proses — dulu itu bisa membuat pemasangan gagal separuh jalan.</p>
         </li>
         <li class="reveal">
-          <p class="changes__tag">Paket</p>
-          <h3>Paket yang sudah terpasang tidak ditawarkan lagi</h3>
-          <p>Aplikasi memeriksa paket mana yang sudah ada di PC resto, lalu melewatinya. Daftar pembaruan tidak lagi menawarkan berkas yang sama berulang kali.</p>
+          <p class="changes__tag">Catatan</p>
+          <h3>Installer menulis catatan pemasangan</h3>
+          <p>Setiap pemasangan meninggalkan catatan (log) di komputer resto. Kalau gagal, penyebabnya bisa dibaca langsung — tidak lagi menebak-nebak kenapa pemasangan berhenti.</p>
         </li>
       </ul>
 
@@ -249,27 +249,27 @@
     <div class="wrap">
       <p class="eyebrow">Unduhan</p>
       <h2>Tiga berkas, tiga peran.</h2>
-      <p class="section__lead">Semua berkas diunduh langsung dari halaman rilis GitHub, versi 1.2.8. Pilih yang sesuai dengan PC atau tablet yang dipakai.</p>
+      <p class="section__lead">Semua berkas diunduh langsung dari halaman rilis GitHub, versi 1.2.9. Pilih yang sesuai dengan PC atau tablet yang dipakai.</p>
 
       <ul class="dl">
         <li class="dl__card dl__card--main reveal">
           <p class="dl__k">01 · Mulai di sini</p>
           <h3>Pemasangan server resto</h3>
           <p>PC server (kasir + dapur). 43 MB.</p>
-          <p class="dl__alt"><a class="link" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.8/Kedaiin-Setup-1.2.8.exe" target="_blank" rel="noopener">Versi lengkap (335 MB, untuk PC tanpa internet)</a></p>
-          <p class="dl__act"><a class="btn btn--primary" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.8/Kedaiin-Setup-1.2.8-slim.exe" target="_blank" rel="noopener">Unduh installer (43 MB)</a></p>
+          <p class="dl__alt"><a class="link" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.9/Kedaiin-Setup-1.2.9.exe" target="_blank" rel="noopener">Versi lengkap (335 MB, untuk PC tanpa internet)</a></p>
+          <p class="dl__act"><a class="btn btn--primary" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.9/Kedaiin-Setup-1.2.9-slim.exe" target="_blank" rel="noopener">Unduh installer (43 MB)</a></p>
         </li>
         <li class="dl__card reveal">
           <p class="dl__k">02 · PC kedua &amp; ketiga</p>
           <h3>Aplikasi kasir &amp; pelayan (PC)</h3>
           <p>Untuk PC kedua/ketiga. 4,9 MB.</p>
-          <p class="dl__act"><a class="btn btn--ghost" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.8/Kedaiin-Desktop-1.2.8.exe" target="_blank" rel="noopener">Unduh aplikasi (4,9 MB)</a></p>
+          <p class="dl__act"><a class="btn btn--ghost" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.9/Kedaiin-Desktop-1.2.9.exe" target="_blank" rel="noopener">Unduh aplikasi (4,9 MB)</a></p>
         </li>
         <li class="dl__card reveal">
           <p class="dl__k">03 · Tablet pelayan</p>
           <h3>Aplikasi tablet</h3>
           <p>Android. 17,5 MB. Pasang manual (di luar Play Store).</p>
-          <p class="dl__act"><a class="btn btn--ghost" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.8/Kedaiin-1.2.8.apk" target="_blank" rel="noopener">Unduh APK (17,5 MB)</a></p>
+          <p class="dl__act"><a class="btn btn--ghost" href="https://github.com/LIinz27/Kedaiin-release/releases/download/v1.2.9/Kedaiin-1.2.9.apk" target="_blank" rel="noopener">Unduh APK (17,5 MB)</a></p>
         </li>
       </ul>
 
@@ -277,7 +277,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.4 21 19.6H3z"/><path d="M12 9.8v4.4"/><path d="M12 17h.01"/></svg>
         <span>Installer belum ditandatangani — Windows bisa menampilkan peringatan “penerbit tidak dikenal”. Panduan: <b>More info → Run anyway</b>.</span>
       </p>
-      <p class="hint">Berkas dari GitHub Release v1.2.8. Aktivasi lisensi ada di layar Pengaturan → Lisensi &amp; Aplikasi.</p>
+      <p class="hint">Berkas dari GitHub Release v1.2.9. Aktivasi lisensi ada di layar Pengaturan → Lisensi &amp; Aplikasi. Pemasangan versi ini belum diuji menyeluruh di Windows — kalau ada yang aneh, laporkan ke kami.</p>
     </div>
   </section>
 
