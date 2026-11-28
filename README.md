@@ -53,7 +53,7 @@ Ganti `width`/`height` di `index.html` bila rasio gambar berubah, dan perbarui `
 - Buka di 1280×800 dan 390×844: tidak boleh ada gulir horizontal.
 - Satu `h1` per halaman, semua gambar punya `alt`.
 - Total berat halaman (HTML + CSS + gambar) ≤ 2 MB.
-- Unduhan di seksi "Unduhan" menunjuk tag rilis tetap (`v1.2.7`), bukan `/latest`: ganti
+- Unduhan di seksi "Unduhan" menunjuk tag rilis tetap (`v1.2.8`), bukan `/latest`: ganti
   ketiga tautan + ukuran di kartu saat versi baru naik.
 - Baris "Installer belum ditandatangani" wajib tetap di seksi unduhan selama sertifikat
   penandatangan belum ada — jangan dipindah ke halaman lain atau disembunyikan.
